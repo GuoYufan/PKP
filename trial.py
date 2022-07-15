@@ -13,59 +13,69 @@ if __name__=="__main__":
             self.codeThisLine=str()
             self.codeAllLines=list()
             self.examples=(
-            "dir()",
-            "dir(list)",
-            "a=[1,2,3,4,3]",
-            "b=[2,3,1]",
-            "from copy import copy",
-            "a_,b_=map(copy,(a,b))",
+            	"a",
+            	"a=1",
+            	"print(a)",
+            	"a=1+'s'",
+            	"1+'s'",
+            	"for 1 in 2",
+            	"b=[1]",
+            	"b.append(2)",
+            	"b",
+            	"'s'",
+            	"print('s')",
+            	"input('h:')",
+            	"dir()",
+             "dir(list)",
+             "a=[1,2,3,4,3]",
+             "b=[2,3,1]",
+             "from copy import copy",
+             "a_,b_=map(copy,(a,b))",
 '''
 def cp():
     global a_,b_
     a_,b_=copy(a),copy(b)
-'''
+''',
 '''
 def new():
     global a,b
     a,b=map(copy,(a_,b_))
 ''',
-'''
-def xxx(a,b):
-    for i in b:
-        if i in a:
-            a.pop(a.index(i))
-''',
-'''
-def yyy(a,b):
-    for i in a:
-        if i in b:
-            a.pop(a.index(i))
-''',
-            "a",
-            "b",
-            	)
-            	
+             "a",
+             "b",
+             )
     
-        def execute(self,statement=None):
+        def execute(self,statement=None):          
             if statement:self.code=statement
-            try:exec(self.code,None,globals())
-            except Exception as e:
-                input(type(e).__name__+":"+str(e))
-                return False
+            
+            # eval执行是否发生异常
+            eval_failed=False
                 
-            if "print" not in self.code:
+            try:
+                eval_return_value=eval(self.code,None,globals())
+                #input("eval执行一次")
+            except Exception as e:
+                    # eval("b=1")
+                    if isinstance(e,SyntaxError):pass
+                    eval_failed=True
+                    
+            if not eval_failed:
+                if not (eval_return_value==None):
+                    print(repr(eval_return_value))        
+                return True
+            else:
                 try:
-                    print(\
-repr(eval(self.code,None,globals())))
+                    exec(self.code,None,globals())
+                    #input("exec执行一次")
                 except Exception as e:
-                    if not isinstance(e,SyntaxError):
-                        print(e)
+                    input("❌"+type(e).__name__+":"+str(e))
                     return False
+                
             return True
         	
         	
         def automatic(self):
-            for statement in self.examples:
+            for statement in self.examples[:-10]:
                 print(f">>> {statement}")
                 self.execute(statement)
     
@@ -183,6 +193,5 @@ if self.codeThisLine.endswith(char)]:
 #GYF根模块由 GYF_using_v12 更新为 GYF_using_plus_v13
 
 
-#updated:2022.117 23:56~
+#updated:2022.11.7 23:56~
 #try...except应该用input暂停它
-
