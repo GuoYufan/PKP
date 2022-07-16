@@ -1,3 +1,5 @@
+from  PKP_istypethisone import *
+
 class 颜色世界():
     def __init__(self):
         from types import MappingProxyType
@@ -37,7 +39,7 @@ class 颜色世界():
         if not self.色名关卡(色名):return self.五颜六色
         if 模式=="add" and type(颜色代码表) in [list,int]:
             if isinstance(颜色代码表,int) or\
-(颜色代码表 and not [i for i in 颜色代码表 if not type(i)==int]):
+(颜色代码表 and 颜色代码表.O(int)):
                 self.五颜六色[色名]=\
 "\033["+";".join(str(颜色代码表).strip("[]").replace(" ",str()).split(","))+"m"
         if 模式=="del" and 色名 in self.五颜六色:del self.五颜六色[色名]
