@@ -44,7 +44,7 @@ def _S_(L):
     compare_to_first_one=[i==first_one for i in sequence.totype()]
     
     if mode in ("all","any"):
-        return eval(f"{eval(mode)(compare_to_first_one)}")
+        return eval(mode)(compare_to_first_one)
     return None
 '''
 
