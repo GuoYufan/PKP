@@ -1,12 +1,5 @@
-import sys
-sys.path.append(
-	"/sdcard/[PKP]/common/module/"
-	"PKP/Stay/AmusementPark")
-del sys
+from SearchPath import *
 from PKP_color import 颜色,上色,取色
-#input(颜色.五颜六色)
-#input(dir(颜色))
-#help(上色)
 
 
 调色板={True:"红",
@@ -169,7 +162,6 @@ while True:
 print(取色("重置色"))
 
 
-
 while True:
     print("⚙️\n⭐️设置你的给出模式",
     	"1:给出分子与分母",
@@ -209,12 +201,16 @@ while True:
             已完成=True
         if 已完成:break
         当前残存者=残存者[0]
+        
+        # 不丢弃最后一位的办法
+        #dcm.getcontext().rounding="ROUND_FLOOR"
         对它找_decimal形式=dcm.Decimal(分子)/dcm.Decimal(当前残存者)
              
         
     对它找_完整部=对它找_str形式=对它找_decimal形式.__str__()
     if not 是否默认给出模式:
-        对它找_完整部=对它找_丢弃最后一位=对它找_str形式[:-1]
+        #对它找_完整部=对它找_丢弃最后一位=对它找_str形式[:-1]
+        pass
     小数部分位数=对它找_完整部.split(".")[-1].__len__()
     print("\n✏️")
     
@@ -227,7 +223,8 @@ while True:
     	f"{dcm.getcontext().prec})"
     	"\n（由于decimal有最后一位四舍五入的毛病 而这不是我要的"
     	"我要的是截取 所以我把最后一位丢弃了",
-    	"而模式二不存在此情况所以不必）")
+    	"而模式二不存在此情况所以不必）",
+    	"\n（我现在有办法可以不丢弃最后一位了）")
     print(对它找_完整部)
     print("\n◾️小数部分位数:",小数部分位数)
        
