@@ -44,13 +44,18 @@ def 试用():
         try:
             a=int(input("\nnum1:"))
             b=int(input("num2:"))
-        except:continue
+        except:
+            print("❌暂不支持非整数")
+            continue
         if 0 in (a,b):
             print("❌计算最大公约数的两个数中任何一个不能是0")
             continue
         break
     print("\n%s和%s的最大公约数是%s"%(a,b,获取最大公约数(a,b)))
+    #print("最简分数是%s"%获取最简分数(f"{a}/{b}"))
     print("最简分数是%s"%获取最简分数_多参版(a,b))
+    #print("最简分数是%s"%分数约分((a,b)))
+
 
 
 def main():
