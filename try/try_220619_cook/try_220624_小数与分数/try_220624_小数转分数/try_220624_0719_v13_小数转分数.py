@@ -117,7 +117,7 @@ def 无限循环小数转分数_拆解(无限循环小数,循环体长度=1):
     # 这时可能增加空（故不推荐用）
     #f_substract="%s/%s"%(int(循环体),f) if 是否有空位 else "0"
     #f_substract="%s/%s"%(int(e//循环体长度*循环体),f) if 是否有空位 else "0"
-    f_substract=获取f_substract_双拉整法(循环体,循环体长度,f)["字符串形式四"] if 是否有空位 else "0"    
+    f_substract=获取f_substract_双拉整法(循环体,循环体长度,f)["字符串形式四"] if 是否有空位 else "0/1"    
     #input("空部不被填时循环部分需要减小的数值的分数形式为f_substract:"
     #	f"{repr(f_substract)}")
     
@@ -162,35 +162,35 @@ def 无限循环小数转分数_拆解(无限循环小数,循环体长度=1):
     #从而还原为i
     
     #当使用h整数形式之相减法之全位来进行还原为i
-    i_相减法_全位=f"{h_整数形式之相减法_全位}/{10**n}" if 是否有空位 else "0"
+    i_相减法_全位=f"{h_整数形式之相减法_全位}/{10**n}" if h!=0 else "0/1"
     #input(f"空部拆解出来的整数形式h进行还原为i\n"
     #f"i字符串形式之当h使用相减法之全位: {repr(i_相减法_全位)}")
 
     #当使用h整数形式之相减法来进行还原为i（默认）
-    i=i_相减法=f"{h}/{f}" if 是否有空位 else "0"
+    i=i_相减法=f"{h}/{f}" if h!=0 else "0/1"
     #input(f"i字符串形式之当h使用相减法（默认）: {repr(i)}")
         
     #当使用h整数形式之数值截取法来进行还原为i
     i_数值截取法="%s/%s"%(h_整数形式之数值截取法,f)\
-if 是否有空位 else "0"
+if h!=0 else "0/1"
     #input(f"i字符串形式之当h使用数值截取法: {repr(i_数值截取法)}")
         
-    i=获取最简分数(i) if 是否有空位 else "0"
+    i=获取最简分数(i) if h!=0 else "0/1"
     #input(f"空部h还原成的分数的最简分数形式的字符串形式为i: {repr(i)}")
     #print(f"【空部:{i}】")
     
     # 空部被填为j
     # 使用额外函数的方法
-    j=分数相加减(i,f_substract,"-") if 是否有空位 else "0"
+    j=分数相加减(i,f_substract,"-") if 是否有空位 else "0/1"
     #input(f"空部被填为j（已化简）（非我哲学法）: {repr(j)}")
     
     # 符合我哲学的 不使用额外函数的方法
-    j="%s/%s"%(h-int(循环体),f) if 是否有空位 else "0"
+    j="%s/%s"%(h-int(循环体),f) if 是否有空位 else "0/1"
     #j="%s/%s"%(h-int(e//循环体长度*循环体),f) if 是否有空位 else "0"
     #input(f"空部被填为j（未化简）（是我哲学法）: {repr(j)}")
     
     # j的最简分数形式
-    j=获取最简分数(j) if 是否有空位 else "0"
+    j=获取最简分数(j) if 是否有空位 else "0/1"
     #input(f"j的最简分数形式（是我哲学法）: {repr(j)}")
     
     return (b,i,g),(f,f_substract,j)
