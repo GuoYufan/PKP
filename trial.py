@@ -13,22 +13,10 @@ if __name__=="__main__":
             self.codeThisLine=str()
             self.codeAllLines=list()
             self.examples=(
-            	"a",
-            	"a=1",
-            	"print(a)",
-            	"a=1+'s'",
-            	"1+'s'",
-            	"for 1 in 2",
-            	"b=[1]",
-            	"b.append(2)",
-            	"b",
-            	"'s'",
-            	"print('s')",
-            	"input('h:')",
             	"dir()",
              "dir(list)",
-             "a=[1,2,3,4,3]",
-             "b=[2,3,1]",
+             "a='GuoYufan'",
+             "b=list(range(10))",
              "from copy import copy",
              "a_,b_=map(copy,(a,b))",
 '''
@@ -75,7 +63,7 @@ def new():
         	
         	
         def automatic(self):
-            for statement in self.examples[:-10]:
+            for statement in self.examples:
                 print(f">>> {statement}")
                 self.execute(statement)
     
