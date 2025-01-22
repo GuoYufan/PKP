@@ -14,14 +14,16 @@ sys.path.append(
 	str(),"try",
 	"try_220619_cook",
 	"try_220624_小数与分数",
-	"try_220624_最大公约数",
+	"try_220701_分数四则运算",
 	)
 ))
 del os,sys,here
 
-from 最大公约数 import (
-	获取最大公约数,
-	获取最简分数,
+from 分数四则运算 import (
+	获取最小公倍数,
+	分数形式转换,
+	连分数转换,
+	分数四则运算,
 	)
 	
 if __name__=="__main__":
