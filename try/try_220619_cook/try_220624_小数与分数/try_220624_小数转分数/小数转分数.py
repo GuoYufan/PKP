@@ -38,7 +38,13 @@ class 小数转分数世界():
     
     
     def get_changed_part(self):
-        循环部分变化为="%s/%s"%(self.循环部分, self.缩小倍数)
+        if not self.空位:
+            self.result_无空部=[self.整部,self.循环部分]
+            self.result_无空部_化简=[self.整部, 获取最简分数(self.循环部分	)]
+            self.result_无空部_计算后=reduce(分数四则运算, (self.result_无空部_化简))
+            return
+            
+        循环部分变化为="%s/%s"%(self.循环部分, self.缩小倍数)        
         self.result_空部不填_倍数缩小法=[self.整部,循环部分变化为,self.空部放回]
         循环部分变化为=连分数转换(循环部分变化为)
         self.result_空部不填_倍数缩小法_化简=[self.整部] + list(map(获取最简分数, (循环部分变化为,self.空部放回)))
@@ -89,7 +95,7 @@ class 小数转分数世界():
         
         # 空位=4-3=1
         self.空位=self.小数部分位数-self.循环体长度
-        
+                
         # 如果没有空位，说明只需要整部+循环部分即可，不需要空部。
         if self.空位==0: return
         
@@ -217,6 +223,21 @@ class 小数转分数世界():
         self.update_basic_info()
         self.get_changed_part()
         
+        if not self.空位:
+            description=(
+                "◾️字符串形式之原式:",
+                "◾️化简:",
+                "◾️从而转为分数:",
+                )
+            整合=zip(description,(
+                        "+".join(self.result_无空部),
+        	                "+".join(self.result_无空部_化简),
+                        self.result_无空部_计算后+"\n",
+        	               )
+                    )
+            return 整合
+                
+                
         description=(
         	"⭐️方法一（空部不填之倍数缩小法）（准确率最高）\n◾️字符串形式之原式:",
         	"◾️化简:",
